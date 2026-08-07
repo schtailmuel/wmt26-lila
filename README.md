@@ -1,4 +1,4 @@
-# WMT26 - LiLa 🐑
+# WMT26 - LiLa ![LiLa logo](lila.png)
 
 Repository accompanying the **LiLa** submission to the **WMT 2026 General Machine Translation Task**.
 
@@ -21,3 +21,4 @@ This repository contains the code and workflow used for:
 
 - The notebook is designed for a Colab-style GPU environment.
 - Secrets (e.g., `HF_TOKEN`) and dataset/output paths are read from environment variables where possible.
+- Logo generated with Google Gemini (**Prompt:** *A cute 3D vector emoji of a fluffy lilac-purple sheep, vibrant pastel lavender fleece, big glossy eyes, isolated on a white background, minimalist digital sticker style.*)
