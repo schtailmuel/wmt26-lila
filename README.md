@@ -1,4 +1,4 @@
-# WMT26 - LiLa <img src="lila.png" height="16" align="center">
+# WMT26 - LiLa <img src="lila.png" height="42" align="center">
 
 Repository accompanying the **LiLa** submission to the **WMT 2026 General Machine Translation Task**.
 
