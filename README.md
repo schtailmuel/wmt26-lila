@@ -14,8 +14,8 @@ This repository contains the code and workflow used for:
 
 ## Released models (Hugging Face)
 
-- Fine-tuned NLLB model (eng-lij): https://huggingface.co/ConseggioLigure/nllb1.3B-eng-lij
-- Fine-tuned NLLB model (eng-lld): https://huggingface.co/ConseggioLigure/nllb1.3B-eng-lld
+Collection of models from the paper “LiLa at WMT 2026 General MT Task” on Ladin and Ligurian machine translation:
+[https://huggingface.co/ConseggioLigure/nllb1.3B-eng-lij](https://huggingface.co/collections/ConseggioLigure/lila)
 
 ## Notes
 
