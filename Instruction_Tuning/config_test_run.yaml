@@ -1,0 +1,32 @@
+# Configuration for Rapid Dry-Run Training Checks
+model_id: "unsloth/gemma-2-2b-it"  # Compact model suitable for fast tests
+device_map: "cuda:0"
+load_in_4bit: true
+
+# Datasets (pointing to our pre-prepared 10-line datasets)
+train_file: "datasets/test_split/test_train.jsonl"
+validation_file: "datasets/test_split/test_val.jsonl"
+instruction_column: "instruction"
+output_column: "output"
+
+# Sequence length configuration
+max_seq_length: 512
+
+# Training SFT parameters (Forces completion in seconds)
+batch_size: 2
+eval_batch_size: 2
+gradient_accumulation_steps: 1
+lr: 2.0e-5
+epochs: 1
+max_steps: 2                     # Terminate after exactly 2 steps
+
+# Logging and Saving (Aligned for load_best_model_at_end validation)
+logging_steps: 1
+save_strategy: "steps"
+save_steps: 2
+eval_strategy: "steps"
+eval_steps: 2
+save_total_limit: 1
+load_best_model_at_end: true
+metric_for_best_model: "loss"
+greater_is_better: false
