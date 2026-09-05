@@ -1,0 +1,57 @@
+# Master Configuration Template for Gemma Translation Fine-Tuning (Full FT & LoRA)
+
+# =====================================================================
+# 1. Model & Device Strategy
+# =====================================================================
+model_id: "google/gemma-4-E4B-it"             # Path or HF repo ID to pre-trained model/CPT model
+device_map: "cuda:0"
+load_in_4bit: false                           # Set to true for QLoRA adapter training
+
+# =====================================================================
+# 2. Datasets Configuration
+# =====================================================================
+train_file: "./datasets/sampled_train.jsonl"          # Path to JSONL training dataset
+validation_file: "./datasets/sampled_validation.jsonl" # Path to JSONL validation dataset
+instruction_column: "instruction"
+output_column: "output"
+source_lang_column: "src_lang"
+target_lang_column: "tgt_lang"
+
+# =====================================================================
+# 3. Training & Batching Hyperparameters
+# =====================================================================
+output_dir: "./output/gemma_translation_full"
+epochs: 3
+batch_size: 4                                # Per-device train batch size
+eval_batch_size: 4                           # Per-device eval batch size
+gradient_accumulation_steps: 12              # Adjust to achieve desired global batch size
+max_seq_length: 1024
+
+# =====================================================================
+# 4. Optimization & Learning Rate
+# =====================================================================
+lr: 2.0e-5                                   # Learning rate (use ~2e-5 for Full FT, ~2e-4 for LoRA)
+weight_decay: 0.01
+warmup_ratio: 0.03
+bf16: true                                   # Set to true if supported by hardware (RTX A5500, A100, etc.)
+fp16: false
+
+# =====================================================================
+# 5. Logging, Saving, & Evaluation Strategies
+# =====================================================================
+logging_steps: 10
+save_strategy: "steps"
+save_steps: 200
+save_total_limit: 3
+load_best_model_at_end: true
+metric_for_best_model: "loss"
+greater_is_better: false
+max_new_tokens: 1024
+
+# =====================================================================
+# 6. LoRA Adapter Configuration (Used by train_lora.py only)
+# =====================================================================
+lora_r: 16
+lora_alpha: 16
+lora_dropout: 0.0                            # Optimized default for Unsloth
+bias: "none"
